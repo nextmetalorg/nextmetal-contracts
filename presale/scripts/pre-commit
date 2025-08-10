@@ -1,0 +1,16 @@
+#!/bin/sh
+# Pre-commit hook to run forge fmt before committing
+
+echo "Running forge fmt..."
+forge fmt
+
+# Check if forge fmt made any changes
+if [ -n "$(git diff --name-only)" ]; then
+    echo "forge fmt has made formatting changes. Please review and stage the changes."
+    echo "Changed files:"
+    git diff --name-only
+    exit 1
+fi
+
+echo "Formatting check passed!"
+exit 0

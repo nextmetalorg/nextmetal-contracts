@@ -1,0 +1,47 @@
+# Compiler files
+cache/
+out/
+
+# Ignores development broadcast logs
+!/broadcast
+/broadcast/*/31337/
+/broadcast/**/dry-run/
+
+# Docs
+docs/
+!docs/integration.md
+
+# Dotenv file
+.env
+# ── Forge build & cache ─────────────────────────────────────────────
+/out/
+/cache/
+/broadcast/                 # tx receipts & gas reports
+/forge-snapshot*.json       # gas snapshot files
+
+# ── Dependencies pulled by `forge install` ──────────────────────────
+/lib/
+/lib64/
+
+# ── Local secrets & config ─────────────────────────────────────────
+.env
+.env.*                      # e.g. .env.local, .env.ci
+foundry.toml.backup         # if you keep per‑env copies
+
+# ── Test & coverage artefacts ──────────────────────────────────────
+/coverage/
+/coverage.json
+/coverage.*.json
+
+# ── Node / front‑end helpers (optional) ────────────────────────────
+node_modules/
+dist/
+build/
+
+# ── Editor & OS noise ──────────────────────────────────────────────
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*.code-workspace

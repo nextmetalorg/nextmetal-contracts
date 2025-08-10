@@ -1,0 +1,49 @@
+###############################################################################
+# ↓↓↓ NETWORK CONFIG ↓↓↓
+###############################################################################
+
+# forge script script/Deploy.s.sol:Deploy --profile sepolia --broadcast --verify -vvvv
+# forge script script/Deploy.s.sol:Deploy --profile mainnet --broadcast --verify -vvvv
+
+[rpc_endpoints]                 # forge/cast can use the alias instead of the URL
+sepolia  = "${SEPOLIA_RPC_URL}" # e.g. https://eth-sepolia.g.alchemy.com/v2/<KEY>
+mainnet  = "${MAINNET_RPC_URL}" # e.g. https://eth-mainnet.g.alchemy.com/v2/<KEY>
+
+[etherscan]                     # forge verify/contract will pick the right host
+sepolia = { key = "${ETHERSCAN_API_KEY}" }  # api‑sepolia.etherscan.io
+mainnet = { key = "${ETHERSCAN_API_KEY}" }  # api.etherscan.io
+
+###############################################################################
+# OPTIONAL: chain‑specific profiles
+###############################################################################
+[profile.sepolia]
+chain_id   = 11155111
+rpc_url    = "sepolia"          # use the alias above
+
+[profile.mainnet]
+chain_id   = 1
+rpc_url    = "mainnet"
+
+###############################################################################
+# PRIVATE KEY (read once, never committed)
+###############################################################################
+private_key = "${PRIVATE_KEY}"  # used by --broadcast / --verify if present
+
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+solc_version = "0.8.30"
+evm_version = "cancun"
+via_ir = true
+default_rpc_endpoint = "sepolia"
+
+[fmt]
+sort_imports = true
+line_length = 120
+tab_width = 4
+bracket_spacing = true
+int_types = "long"
+func_attrs_with_params_multiline = true
+quote_style = "double"
+number_underscore = "thousands"
